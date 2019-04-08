@@ -1,0 +1,11 @@
+
+use frameworks!
+target 'RXMacDemo' do
+
+
+
+
+inhibit_all_warnings!
+
+end
+
