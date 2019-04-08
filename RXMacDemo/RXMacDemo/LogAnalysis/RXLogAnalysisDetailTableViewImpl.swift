@@ -9,5 +9,5 @@
 import Cocoa
 
 class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource {
-    var dataArray:[RXLogAnalysisDetailModel] = []
+    var dataArray: [RXLogAnalysisDetailModel] = []
 }

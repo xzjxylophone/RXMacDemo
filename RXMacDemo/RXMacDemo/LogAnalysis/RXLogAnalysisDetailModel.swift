@@ -9,5 +9,8 @@
 import Cocoa
 
 class RXLogAnalysisDetailModel: NSObject {
-
+    var values: [String] = []
+    init(_values: [String]) {
+        self.values = _values
+    }
 }

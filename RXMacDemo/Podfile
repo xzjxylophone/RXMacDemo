@@ -1,7 +1,10 @@
 
-use frameworks!
+use_frameworks!
+
 target 'RXMacDemo' do
 
+
+pod 'CrossroadRegex'
 
 
 

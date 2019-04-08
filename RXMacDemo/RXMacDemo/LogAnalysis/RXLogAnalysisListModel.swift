@@ -9,5 +9,23 @@
 import Cocoa
 
 class RXLogAnalysisListModel: NSObject {
+    
+    var keys: [String] = [] {
+        didSet {
+            self.showDic = [:]
+            for key in self.keys {
+                self.showDic[key] = true
+            }
+        }
+    }
+    
+    
+    var showDic: [String: Bool] = [:]
+    
+    var items: [RXLogAnalysisDetailModel] = []
+    
+    var fileFullPath: String = ""
+    
+    
 
 }

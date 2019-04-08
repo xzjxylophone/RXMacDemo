@@ -1,0 +1,16 @@
+PODS:
+  - CrossroadRegex (1.1.0)
+
+DEPENDENCIES:
+  - CrossroadRegex
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CrossroadRegex
+
+SPEC CHECKSUMS:
+  CrossroadRegex: 5eaadb3f7b4014728f1cbd1014756b126c1dbd9a
+
+PODFILE CHECKSUM: 4dc47293863a736e065a80a9edb3cb606fb63752
+
+COCOAPODS: 1.5.3

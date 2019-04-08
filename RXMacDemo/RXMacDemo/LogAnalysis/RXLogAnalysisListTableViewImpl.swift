@@ -7,9 +7,11 @@
 //
 
 import Cocoa
+import Regex
+
 
 class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource {
-    var dataArray:[RXLogAnalysisListModel] = []
+    var dataArray: [RXLogAnalysisListModel] = []
     
     func load(path: String) {
         
@@ -27,18 +29,46 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
                         let isDir2: UnsafeMutablePointer<ObjCBool> = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
                         let isExist2 = fm.fileExists(atPath: fullPath, isDirectory: isDir2)
                         if isExist2 && !isDir2.pointee.boolValue {
-                            let content: String? = try? String(contentsOf: URL(fileURLWithPath: fullPath))
-                            let myStrings = content!.components(separatedBy: .newlines)
+                            let tmpContent: String? = try? String(contentsOf: URL(fileURLWithPath: fullPath))
+                            if tmpContent == nil {
+                                continue
+                            }
+                            let separatedString: String = "\n"
+                            let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
+                            let myStrings = content.components(separatedBy: separatedString)
                             // https://blog.csdn.net/u013776081/article/details/43152759
                             // https://www.cnblogs.com/zwvista/p/8324371.html
+                            var keys: [String] = []
+                            var items: [RXLogAnalysisDetailModel] = []
+//                            let pattern: String = ", (?=(?:\"[^\"]*?(?: [^\"]*)*))|, (?=[^\",]+(?:,|$))"
+//                            let pattern: String = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"
+//                            let pattern: String = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"
+//                            let pattern: String = "(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"
+//                            let pattern: String = "[^,\"']+|\"([^\"]*)\""
+                            // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
+                            // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
+                            let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
+                            
+//                            let pattern: String = ",(?![^\"]*+\\\")"
+//                            let pattern: String = ",(?![^()]*+\\))"
                             for line in myStrings {
-                                NSLog("%@", line)
-                                
-                                
+                                if line.count == 0 {
+                                    continue
+                                }
+                                if keys.count == 0 {
+                                    keys = line.components(separatedBy: ",")
+                                } else {
+                                    let values: [String] = line.split(using: pattern.r)
+                                    let item:RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
+                                    items.append(item)
+                                }
                             }
+                            let listModel:RXLogAnalysisListModel = RXLogAnalysisListModel()
+                            listModel.keys = keys
+                            listModel.items = items
+                            listModel.fileFullPath = fullPath
+                            self.dataArray.append(listModel)
                         }
-                        // 测试的时候先读一个
-                        break
                     }
                 }
                 
@@ -54,6 +84,8 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         } else {
             NSLog("2222")
         }
+        
+        NSLog("load end")
         
     }
     
