@@ -27,7 +27,9 @@ class ViewController: NSViewController {
     }
     //
     @IBAction func logAnalysisAction(sender: NSButton) {
-        let wc = RXLogAnalysisMainWindowController(windowNibName: "RXLogAnalysisMainWindowController")
+        let vc = RXLogAnalysisMainViewController(nibName: "RXLogAnalysisMainViewController", bundle: Bundle.main)
+        let window = NSWindow.init(contentViewController: vc)
+        let wc = NSWindowController.init(window: window)
         wc.showWindow(nil)
         
         // 以下的两种方式无法加载xib的内容

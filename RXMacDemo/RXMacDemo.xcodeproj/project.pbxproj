@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3328A294F8497D80299FC4D8 /* Pods_RXMacDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CD0A463202958681C018D5 /* Pods_RXMacDemo.framework */; };
+		580CE31A228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580CE318228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift */; };
+		580CE31B228A9845003ABDA3 /* RXLogAnalysisMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580CE319228A9845003ABDA3 /* RXLogAnalysisMainViewController.xib */; };
 		5826B9642253982A0020C47C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826B9632253982A0020C47C /* AppDelegate.swift */; };
 		5826B9662253982A0020C47C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826B9652253982A0020C47C /* ViewController.swift */; };
 		5826B9682253982C0020C47C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5826B9672253982C0020C47C /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		017FB7907120CDF7CC64F36F /* Pods-RXMacDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXMacDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RXMacDemo/Pods-RXMacDemo.release.xcconfig"; sourceTree = "<group>"; };
 		48CD0A463202958681C018D5 /* Pods_RXMacDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RXMacDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		580CE318228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisMainViewController.swift; sourceTree = "<group>"; };
+		580CE319228A9845003ABDA3 /* RXLogAnalysisMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RXLogAnalysisMainViewController.xib; sourceTree = "<group>"; };
 		5826B9602253982A0020C47C /* RXMacDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RXMacDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5826B9632253982A0020C47C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5826B9652253982A0020C47C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				5826B97E225449E10020C47C /* RXLogAnalysisManager.swift */,
 				5826B98022544C660020C47C /* RXLogAnalysisListModel.swift */,
 				5826B98222544C740020C47C /* RXLogAnalysisDetailModel.swift */,
+				580CE318228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift */,
+				580CE319228A9845003ABDA3 /* RXLogAnalysisMainViewController.xib */,
 			);
 			path = LogAnalysis;
 			sourceTree = "<group>";
@@ -184,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580CE31B228A9845003ABDA3 /* RXLogAnalysisMainViewController.xib in Resources */,
 				5826B9772253997B0020C47C /* RXLogAnalysisMainWindowController.xib in Resources */,
 				5826B9682253982C0020C47C /* Assets.xcassets in Resources */,
 				5826B96B2253982C0020C47C /* Main.storyboard in Resources */,
@@ -224,13 +231,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RXMacDemo/Pods-RXMacDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CrossroadRegex/Regex.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Regex.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -244,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580CE31A228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift in Sources */,
 				5826B9762253997B0020C47C /* RXLogAnalysisMainWindowController.swift in Sources */,
 				5826B97D225449B20020C47C /* RXLogAnalysisDetailTableViewImpl.swift in Sources */,
 				5826B97B2254499E0020C47C /* RXLogAnalysisListTableViewImpl.swift in Sources */,

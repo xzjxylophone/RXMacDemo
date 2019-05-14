@@ -13,6 +13,31 @@ import Regex
 class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     var dataArray: [RXLogAnalysisListModel] = []
     
+    weak var tableView: NSTableView? = nil {
+        willSet {
+//            self.tableView?.dataSource = nil
+//            self.tableView?.delegate = nil
+        }
+        didSet {
+//            self.tableView?.dataSource = self
+//            self.tableView?.delegate = self
+//            self.setupTableView()
+        }
+    }
+    
+    func setupTableView() {
+        
+        
+        
+        
+        let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "cell"))
+        column.width = 100
+        column.maxWidth = 100;
+        column.minWidth = 100;
+        column.title = "column1"
+        self.tableView?.addTableColumn(column)
+    }
+    
     func load(path: String) {
         
         self.dataArray = []
@@ -40,17 +65,9 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
                             // https://www.cnblogs.com/zwvista/p/8324371.html
                             var keys: [String] = []
                             var items: [RXLogAnalysisDetailModel] = []
-//                            let pattern: String = ", (?=(?:\"[^\"]*?(?: [^\"]*)*))|, (?=[^\",]+(?:,|$))"
-//                            let pattern: String = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"
-//                            let pattern: String = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"
-//                            let pattern: String = "(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"
-//                            let pattern: String = "[^,\"']+|\"([^\"]*)\""
                             // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
                             // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
                             let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
-                            
-//                            let pattern: String = ",(?![^\"]*+\\\")"
-//                            let pattern: String = ",(?![^()]*+\\))"
                             for line in myStrings {
                                 if line.count == 0 {
                                     continue
@@ -88,5 +105,39 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         NSLog("load end")
         
     }
+    
+    // MARK: - NSTableViewDataSource
+    func numberOfRows(in tableView: NSTableView) -> Int {
+//        return self.dataArray.count
+        return 10
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 40
+    }
+    
+//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+////        let model: RXLogAnalysisListModel = self.dataArray[row]
+//        return String.init(format: "%ld", row)
+//    }
+    
+    
+    // MARK: - NSTableViewDelegate
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let identifier: String = "cell"
+//        let model: RXLogAnalysisListModel = self.dataArray[row]
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: identifier), owner: nil) as? NSTableCellView {
+//            cell.textField?.stringValue = model.fileFullPath
+            cell.textField?.stringValue = "1111"
+            return cell
+        }
+        return nil
+    }
+//
+    func tableView(_ tableView: NSTableView, dataCellFor tableColumn: NSTableColumn?, row: Int) -> NSCell? {
+        return nil
+    }
+    
+    
     
 }
