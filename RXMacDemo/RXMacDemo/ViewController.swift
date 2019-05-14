@@ -27,10 +27,13 @@ class ViewController: NSViewController {
     }
     //
     @IBAction func logAnalysisAction(sender: NSButton) {
-        let vc = RXLogAnalysisMainViewController(nibName: "RXLogAnalysisMainViewController", bundle: Bundle.main)
-        let window = NSWindow.init(contentViewController: vc)
-        let wc = NSWindowController.init(window: window)
+        let wc = RXLogAnalysisMainWindowController.init()
         wc.showWindow(nil)
+        
+//        let vc = RXLogAnalysisMainViewController(nibName: "RXLogAnalysisMainViewController", bundle: Bundle.main)
+//        let window = NSWindow.init(contentViewController: vc)
+//        let wc = NSWindowController.init(window: window)
+//        wc.showWindow(nil)
         
         // 以下的两种方式无法加载xib的内容
 //        let wc = RXLogAnalysisMainWindowController(windowNibName: "RXLogAnalysisMainWindowController", owner:self)
