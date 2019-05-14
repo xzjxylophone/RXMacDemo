@@ -9,8 +9,8 @@
 import Cocoa
 
 class RXLogAnalysisContext: NSObject {
-    let listImpl: RXLogAnalysisListTableViewImpl! = RXLogAnalysisListTableViewImpl()
-    let detailImpl: RXLogAnalysisDetailTableViewImpl! = RXLogAnalysisDetailTableViewImpl()
+    let listImpl: RXLogAnalysisListTableViewImpl = RXLogAnalysisListTableViewImpl()
+    let detailImpl: RXLogAnalysisDetailTableViewImpl = RXLogAnalysisDetailTableViewImpl()
 
     
     func load() {
