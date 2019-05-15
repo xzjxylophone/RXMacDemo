@@ -10,6 +10,7 @@
 		3328A294F8497D80299FC4D8 /* Pods_RXMacDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CD0A463202958681C018D5 /* Pods_RXMacDemo.framework */; };
 		580CE31A228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580CE318228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift */; };
 		580CE31D228AAE46003ABDA3 /* RXLogAnalysisMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580CE31C228AAE46003ABDA3 /* RXLogAnalysisMainViewController.xib */; };
+		580CE322228C153D003ABDA3 /* RXLogAnalysisFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580CE321228C153D003ABDA3 /* RXLogAnalysisFunctionView.swift */; };
 		5826B9642253982A0020C47C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826B9632253982A0020C47C /* AppDelegate.swift */; };
 		5826B9662253982A0020C47C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826B9652253982A0020C47C /* ViewController.swift */; };
 		5826B9682253982C0020C47C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5826B9672253982C0020C47C /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		48CD0A463202958681C018D5 /* Pods_RXMacDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RXMacDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		580CE318228A9845003ABDA3 /* RXLogAnalysisMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisMainViewController.swift; sourceTree = "<group>"; };
 		580CE31C228AAE46003ABDA3 /* RXLogAnalysisMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RXLogAnalysisMainViewController.xib; sourceTree = "<group>"; };
+		580CE321228C153D003ABDA3 /* RXLogAnalysisFunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisFunctionView.swift; sourceTree = "<group>"; };
 		5826B9602253982A0020C47C /* RXMacDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RXMacDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5826B9632253982A0020C47C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5826B9652253982A0020C47C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				5826B97E225449E10020C47C /* RXLogAnalysisManager.swift */,
 				5826B98022544C660020C47C /* RXLogAnalysisListModel.swift */,
 				5826B98222544C740020C47C /* RXLogAnalysisDetailModel.swift */,
+				580CE321228C153D003ABDA3 /* RXLogAnalysisFunctionView.swift */,
 			);
 			path = LogAnalysis;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				5826B97D225449B20020C47C /* RXLogAnalysisDetailTableViewImpl.swift in Sources */,
 				5826B97B2254499E0020C47C /* RXLogAnalysisListTableViewImpl.swift in Sources */,
 				5826B97F225449E10020C47C /* RXLogAnalysisManager.swift in Sources */,
+				580CE322228C153D003ABDA3 /* RXLogAnalysisFunctionView.swift in Sources */,
 				5826B98122544C660020C47C /* RXLogAnalysisListModel.swift in Sources */,
 				5826B9662253982A0020C47C /* ViewController.swift in Sources */,
 				5826B979225448960020C47C /* RXLogAnalysisContext.swift in Sources */,

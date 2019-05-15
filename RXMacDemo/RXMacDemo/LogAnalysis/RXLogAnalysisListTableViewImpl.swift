@@ -14,7 +14,6 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
     var dataArray: [RXLogAnalysisListModel] = []
     
     
-    let tableViewData = [["firstName1111":"John","lastName":"Doe","emailId":"john.doe@knowstack.com"],["firstName1111":"Jane","lastName":"Doe","emailId":"jane.doe@knowstack.com"]]
     
     
     weak var tableView: NSTableView? = nil {
@@ -23,14 +22,17 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
 //            self.tableView?.delegate = nil
         }
         didSet {
-            self.tableView?.dataSource = self
-            self.tableView?.delegate = self
             self.setupTableView()
         }
     }
     
     func setupTableView() {
-        let tableColumn = NSTableColumn.init(identifier: NSUserInterfaceItemIdentifier.init("emailId"))
+        // 颜色交替
+        self.tableView?.usesAlternatingRowBackgroundColors = true
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
+        
+        let tableColumn = NSTableColumn.init(identifier: NSUserInterfaceItemIdentifier.init("description"))
         self.tableView?.addTableColumn(tableColumn)
     }
     
@@ -69,6 +71,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
                 }
                 let listModel:RXLogAnalysisListModel = RXLogAnalysisListModel()
                 listModel.fileFullPath = fullPath
+                listModel.fileName = fileName
                 let separatedString: String = "\n"
                 let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
                 let myStrings = content.components(separatedBy: separatedString)
@@ -102,13 +105,32 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
     
     // MARK: NSTableViewDataSource
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return tableViewData.count
+        return self.dataArray.count
     }
+    
+//    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+//        let key: String = (tableColumn?.identifier.rawValue)!
+//        let result: NSTableCellView = tableView.makeView(withIdentifier: (tableColumn?.identifier)!, owner: self) as! NSTableCellView
+//        let model: RXLogAnalysisListModel = self.dataArray[row]
+//        result.textField?.stringValue = model.value(forKey: key) as! String
+//        return result
+//    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 200
+    }
+    
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         let key: String = (tableColumn?.identifier.rawValue)!
-        return tableViewData[row][key]
+        let model: RXLogAnalysisListModel = self.dataArray[row]
+        return model.value(forKey: key)
     }
-    
-    
+//
+    func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
+        if cell is NSTextFieldCell {
+            let textFieldCell:NSTextFieldCell = cell as! NSTextFieldCell
+            textFieldCell.font = NSFont.systemFont(ofSize: 17)
+        }
+    }
     
 }

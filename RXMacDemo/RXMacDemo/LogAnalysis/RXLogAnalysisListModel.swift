@@ -28,6 +28,7 @@ class RXLogAnalysisListModel: NSObject {
 //    var items: [RXLogAnalysisDetailModel] = []
     
     var fileFullPath: String = ""
+    var fileName: String = ""
     
     
     
@@ -102,6 +103,27 @@ class RXLogAnalysisListModel: NSObject {
             return defaultValue
         }
         return values[index]
+    }
+    
+    var wifiString: String {
+        if Int(self.wifi) == 1 {
+            return "WIFI"
+        } else {
+            return "2G/3G/4G/5G"
+        }
+    }
+    
+    override var description: String {
+        var result = ""
+        result += "\(self.fileName)\n"
+        result += "\(self.date) \(self.app_kid_id)\n"
+        result += "\(self.app_class_id)\n"
+        result += "\(self.app_room_id)\n"
+        result += "\(self.app_build_version)\n"
+        result += "\(self.model) \(self.os_version)\n"
+        result += "\(self.wifiString) \(self.screen_width)X\(self.screen_height)\n"
+        result += "\(self.country)\(self.province)\(self.city)\n"
+        return result
     }
     
   

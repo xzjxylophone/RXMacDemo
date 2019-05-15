@@ -15,6 +15,7 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
     let listTableView: NSTableView = NSTableView()
     let detailScrollView: NSScrollView = NSScrollView()
     let detailTableView: NSTableView = NSTableView()
+    let functionView: RXLogAnalysisFunctionView = RXLogAnalysisFunctionView()
     
     let context: RXLogAnalysisContext = RXLogAnalysisContext()
 
@@ -26,7 +27,6 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         // Do view setup here.
         
         self.listScrollView.contentView.documentView = self.listTableView
-        
         self.view.addSubview(self.listScrollView)
         self.listScrollView.snp.makeConstraints { (make) in
             make.width.equalTo(200)
@@ -35,37 +35,38 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
             make.bottom.equalTo(self.view).offset(0)
         }
         
+        self.view.addSubview(self.functionView)
+        let layer: CALayer = CALayer()
+        self.functionView.layer = layer
+        self.functionView.layer?.backgroundColor = NSColor.blue.cgColor
+        self.functionView.snp.makeConstraints { (make) in
+            make.width.equalTo(200)
+            make.right.equalTo(self.view).offset(0)
+            make.top.equalTo(self.view).offset(0)
+            make.bottom.equalTo(self.view).offset(0)
+        }
+        
+        
         self.detailScrollView.contentView.documentView = self.detailTableView
+        self.detailTableView.backgroundColor = .red
+        self.view.addSubview(self.detailScrollView)
+        self.detailScrollView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.listScrollView.snp.right).offset(0)
+            make.right.equalTo(self.functionView.snp.left).offset(0)
+            make.top.equalTo(self.view).offset(0)
+            make.bottom.equalTo(self.view).offset(0)
+        }
+        
+        
+        
         
         
         
         
         self.context.listImpl.tableView = self.listTableView
-        
-        
         self.context.load()
 
     }
     
-//    func numberOfRows(in tableView: NSTableView) -> Int {
-//        //        return self.modelArray.count
-//        return tableViewData.count
-//    }
-//    //    func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
-//    //        let textFieldCell: NSTextFieldCell? = cell as? NSTextFieldCell
-//    //        textFieldCell?.title = "3333"
-//    //    }
-//    //    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-//    //        return 40
-//    //    }
-//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-//        //        let model: TTModel = self.modelArray[row]
-//        //        let key: String = tableColumn?.identifier.rawValue ?? ""
-//        //        let value = model.value(forKeyPath: key)
-//        //        return value
-//        
-//        let key: String = (tableColumn?.identifier.rawValue)!
-//        return tableViewData[row][key]
-//    }
     
 }

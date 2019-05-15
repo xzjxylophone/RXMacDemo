@@ -14,6 +14,7 @@ import SnapKit
 //@objcMembers
 //// https://stackoverflow.com/questions/44461603/valueforkey-for-nsobject-not-working-in-swift-4
 //// http://www.knowstack.com/swift-3-1-nstableview-complete-guide/
+//// https://stackoverflow.com/questions/33992756/is-it-possible-to-create-a-view-based-nstableview-purely-in-code
 //class TTModel : NSObject {
 //    public var name: String = ""
 //    public var age: Int = 0
