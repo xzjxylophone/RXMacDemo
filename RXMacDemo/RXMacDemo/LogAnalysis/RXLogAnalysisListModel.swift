@@ -25,7 +25,7 @@ class RXLogAnalysisListModel: NSObject {
     // 哪些列是显示，哪些列是不显示的
     var showDic: [String: Bool] = [:]
     
-//    var items: [RXLogAnalysisDetailModel] = []
+    var items: [RXLogAnalysisDetailModel] = []
     
     var fileFullPath: String = ""
     var fileName: String = ""
@@ -59,6 +59,8 @@ class RXLogAnalysisListModel: NSObject {
     var city: String = ""
     var country: String = ""
     
+    
+    var isBaseInfoLoad: Bool = false
  
     
     func setBaseInfo(values: [String]) -> Bool {
@@ -90,7 +92,7 @@ class RXLogAnalysisListModel: NSObject {
             let value: String = self.getValue(key: key, values: values, defaultValue: "")
             self.setValue(value, forKey: key)
         }
-        
+        self.isBaseInfoLoad = true
         return true
     }
     

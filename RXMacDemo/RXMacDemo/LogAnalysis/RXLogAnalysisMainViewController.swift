@@ -48,7 +48,6 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         
         
         self.detailScrollView.contentView.documentView = self.detailTableView
-        self.detailTableView.backgroundColor = .red
         self.view.addSubview(self.detailScrollView)
         self.detailScrollView.snp.makeConstraints { (make) in
             make.left.equalTo(self.listScrollView.snp.right).offset(0)
@@ -62,8 +61,9 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         
         
         
-        
+        RXLogAnalysisManager.sharedInstance.context = context
         self.context.listImpl.tableView = self.listTableView
+        self.context.detailImpl.tableView = self.detailTableView
         self.context.load()
 
     }

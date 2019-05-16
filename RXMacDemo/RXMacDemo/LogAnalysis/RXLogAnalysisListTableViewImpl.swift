@@ -59,73 +59,110 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
     }
     
     func load(path: String, files: [String]) {
-        let fm = FileManager.default
         for fileName in files {
             let fullPath = path + "/" + fileName
-            let isDir2: UnsafeMutablePointer<ObjCBool> = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
-            let isExist2 = fm.fileExists(atPath: fullPath, isDirectory: isDir2)
-            if isExist2 && !isDir2.pointee.boolValue {
-                let tmpContent: String? = try? String(contentsOf: URL(fileURLWithPath: fullPath))
-                if tmpContent == nil {
-                    continue
-                }
-                let listModel:RXLogAnalysisListModel = RXLogAnalysisListModel()
-                listModel.fileFullPath = fullPath
-                listModel.fileName = fileName
-                let separatedString: String = "\n"
-                let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
-                let myStrings = content.components(separatedBy: separatedString)
-                // https://blog.csdn.net/u013776081/article/details/43152759
-                // https://www.cnblogs.com/zwvista/p/8324371.html
-//                var items: [RXLogAnalysisDetailModel] = []
-                // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
-                // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
-                let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
-                for line in myStrings {
-                    if line.count == 0 {
-                        continue
-                    }
-                    if listModel.keys.count == 0 { // 第一行获取keys
-                        listModel.keys = line.components(separatedBy: ",")
-                    } else {
-                        let values: [String] = line.split(using: pattern.r)
-//                        let item:RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
-//                        items.append(item)
-                        if listModel.setBaseInfo(values: values) {
-                            // 如果已经设置了相关的基本信息，可以暂停逐行分析
-                            break;
-                        }
-                    }
-                }
+            
+            
+            let listModel:RXLogAnalysisListModel = RXLogAnalysisListModel()
+            listModel.fileFullPath = fullPath
+            listModel.fileName = fileName
+            let returnValue = self.load(fileFullPath: fullPath, model: listModel, detailModelArray: nil)
+            if returnValue {
                 self.dataArray.append(listModel)
             }
         }
     }
     
+    func load(fileFullPath: String, model: RXLogAnalysisListModel, detailModelArray: [RXLogAnalysisDetailModel]?) ->Bool {
+        let fm = FileManager.default
+        let isDir2: UnsafeMutablePointer<ObjCBool> = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
+        let isExist2 = fm.fileExists(atPath: fileFullPath, isDirectory: isDir2)
+        if !isExist2 || isDir2.pointee.boolValue {
+            return false
+        }
+        let tmpContent: String? = try? String(contentsOf: URL(fileURLWithPath: fileFullPath))
+        if tmpContent == nil {
+            return false
+        }
+        let separatedString: String = "\n"
+        let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
+        let myStrings = content.components(separatedBy: separatedString)
+        // https://blog.csdn.net/u013776081/article/details/43152759
+        // https://www.cnblogs.com/zwvista/p/8324371.html
+                        var items: [RXLogAnalysisDetailModel] = []
+        // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
+        // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
+        let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
+        for line in myStrings {
+            if line.count == 0 {
+                continue
+            }
+            if model.keys.count == 0 { // 第一行获取keys
+                model.keys = line.components(separatedBy: ",")
+            } else {
+                let values: [String] = line.split(using: pattern.r)
+                if !model.isBaseInfoLoad {
+                    let setResult = model.setBaseInfo(values: values)
+                    print("\(setResult)")
+                }
+                let item:RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
+                items.append(item)
+            
+            }
+        }
+        model.items = items
+        return true
+    }
+    
+    func load(fileFullPath: String) ->[RXLogAnalysisDetailModel] {
+        var resultArray: [RXLogAnalysisDetailModel] = []
+        let tmpContent: String? = try? String(contentsOf: URL(fileURLWithPath: fileFullPath))
+        let separatedString: String = "\n"
+        let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
+        let myStrings = content.components(separatedBy: separatedString)
+        // https://blog.csdn.net/u013776081/article/details/43152759
+        // https://www.cnblogs.com/zwvista/p/8324371.html
+        //                var items: [RXLogAnalysisDetailModel] = []
+        // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
+        // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
+        let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
+        var isFirst = true
+        for line in myStrings {
+            if line.count == 0 {
+                continue
+            }
+            if isFirst { // 第一行获取keys
+                isFirst = false
+            } else {
+                let values: [String] = line.split(using: pattern.r)
+                let item:RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
+                resultArray.append(item)
+            }
+        }
+        return resultArray
+    }
+    // MARK: NSTableViewDelegate
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        let model: RXLogAnalysisListModel = self.dataArray[row]
+//        let array: [RXLogAnalysisDetailModel] = self.load(fileFullPath: model.fileFullPath)
+        RXLogAnalysisManager.sharedInstance.context?.detailImpl.listModel = model
+        RXLogAnalysisManager.sharedInstance.context?.detailImpl.dataArray = model.items
+        RXLogAnalysisManager.sharedInstance.context?.detailImpl.tableView?.reloadData()
+        return true
+    }
     
     // MARK: NSTableViewDataSource
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.dataArray.count
     }
-    
-//    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-//        let key: String = (tableColumn?.identifier.rawValue)!
-//        let result: NSTableCellView = tableView.makeView(withIdentifier: (tableColumn?.identifier)!, owner: self) as! NSTableCellView
-//        let model: RXLogAnalysisListModel = self.dataArray[row]
-//        result.textField?.stringValue = model.value(forKey: key) as! String
-//        return result
-//    }
-    
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 200
     }
-    
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         let key: String = (tableColumn?.identifier.rawValue)!
         let model: RXLogAnalysisListModel = self.dataArray[row]
         return model.value(forKey: key)
     }
-//
     func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
         if cell is NSTextFieldCell {
             let textFieldCell:NSTextFieldCell = cell as! NSTextFieldCell
