@@ -27,6 +27,8 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         // Do view setup here.
         
         self.listScrollView.contentView.documentView = self.listTableView
+        self.listScrollView.hasVerticalScroller = true
+        self.listScrollView.verticalScroller?.alphaValue = 1.0
         self.view.addSubview(self.listScrollView)
         self.listScrollView.snp.makeConstraints { (make) in
             make.width.equalTo(200)
@@ -48,6 +50,10 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         
         
         self.detailScrollView.contentView.documentView = self.detailTableView
+        self.detailScrollView.hasVerticalScroller = true
+        self.detailScrollView.verticalScroller?.alphaValue = 1.0
+        self.detailScrollView.hasHorizontalScroller = true
+        self.detailScrollView.horizontalScroller?.alphaValue = 1.0
         self.view.addSubview(self.detailScrollView)
         self.detailScrollView.snp.makeConstraints { (make) in
             make.left.equalTo(self.listScrollView.snp.right).offset(0)

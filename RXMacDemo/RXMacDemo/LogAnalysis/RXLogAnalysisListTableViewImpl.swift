@@ -31,8 +31,11 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         self.tableView?.usesAlternatingRowBackgroundColors = true
         self.tableView?.dataSource = self
         self.tableView?.delegate = self
+        self.tableView?.allowsColumnResizing = true
         
         let tableColumn = NSTableColumn.init(identifier: NSUserInterfaceItemIdentifier.init("description"))
+        tableColumn.title = "简要说明"
+        tableColumn.isEditable = false
         self.tableView?.addTableColumn(tableColumn)
     }
     
@@ -89,7 +92,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         let myStrings = content.components(separatedBy: separatedString)
         // https://blog.csdn.net/u013776081/article/details/43152759
         // https://www.cnblogs.com/zwvista/p/8324371.html
-                        var items: [RXLogAnalysisDetailModel] = []
+        var items: [RXLogAnalysisDetailModel] = []
         // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
         // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
         let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
@@ -144,10 +147,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
     // MARK: NSTableViewDelegate
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         let model: RXLogAnalysisListModel = self.dataArray[row]
-//        let array: [RXLogAnalysisDetailModel] = self.load(fileFullPath: model.fileFullPath)
-        RXLogAnalysisManager.sharedInstance.context?.detailImpl.listModel = model
-        RXLogAnalysisManager.sharedInstance.context?.detailImpl.dataArray = model.items
-        RXLogAnalysisManager.sharedInstance.context?.detailImpl.tableView?.reloadData()
+        RXLogAnalysisManager.sharedInstance.context?.detailImpl.reload(listModel: model)
         return true
     }
     

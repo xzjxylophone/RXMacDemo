@@ -61,7 +61,25 @@ class RXLogAnalysisListModel: NSObject {
     
     
     var isBaseInfoLoad: Bool = false
+    
+    let nonnullPropertyNames: [String] =
+        ["date", "app_kid_id", "app_class_id", "app_room_id"]
+    let nullablePropertyNames: [String] =
+        ["app_build_version", "app_version", "os_version", "model", "province", "ip",
+         "user_id", "distinct_id", "network_type", "app_teacher_id", "carrier",
+         "manufacturer", "wifi", "screen_width", "screen_height", "lib", "os", "lib_version", "city", "country"]
  
+    
+    
+    let showPropertyNames: [String] = ["time", "event_id", "e_level", "app_class_vendor", "app_class_linecode",
+                                       "app_status_code", "app_status_description"]
+    
+    // 剩余的
+    let showPropertyNames2: [String] = ["time", "event", "event_id", "type",
+                                       "reason", "sender", "sub_sender", "module",
+                                       "sub_module", "e_level", "app_class_vendor", "app_class_linecode",
+                                       "app_status_code", "app_status_description", "app_origin_data"]
+    
     
     func setBaseInfo(values: [String]) -> Bool {
         
@@ -72,10 +90,9 @@ class RXLogAnalysisListModel: NSObject {
             return false
         }
         
-        let nonnullPropertyNames: [String] =
-            ["date", "app_kid_id", "app_class_id", "app_room_id"]
         
-        for key in nonnullPropertyNames {
+        
+        for key in self.nonnullPropertyNames {
             let value: String = self.getValue(key: key, values: values, defaultValue: "")
             if (value.count == 0) {
                 return false
@@ -83,12 +100,9 @@ class RXLogAnalysisListModel: NSObject {
             self.setValue(value, forKey: key)
         }
         
-        let nullablePropertyNames: [String] =
-            ["app_build_version", "app_version", "os_version", "model", "province", "ip",
-             "user_id", "distinct_id", "network_type", "app_teacher_id", "carrier",
-             "manufacturer", "wifi", "screen_width", "screen_height", "lib", "os", "lib_version", "city", "country"]
         
-        for key in nullablePropertyNames {
+        
+        for key in self.nullablePropertyNames {
             let value: String = self.getValue(key: key, values: values, defaultValue: "")
             self.setValue(value, forKey: key)
         }
@@ -117,14 +131,15 @@ class RXLogAnalysisListModel: NSObject {
     
     override var description: String {
         var result = ""
-        result += "\(self.fileName)\n"
-        result += "\(self.date) \(self.app_kid_id)\n"
+        result += "文件名：\(self.fileName)\n"
+        result += "\(self.date)--\(self.app_kid_id)\n"
         result += "\(self.app_class_id)\n"
         result += "\(self.app_room_id)\n"
         result += "\(self.app_build_version)\n"
-        result += "\(self.model) \(self.os_version)\n"
-        result += "\(self.wifiString) \(self.screen_width)X\(self.screen_height)\n"
-        result += "\(self.country)\(self.province)\(self.city)\n"
+        result += "\(self.model)--\(self.os_version)\n"
+        result += "\(self.wifiString)--\(self.screen_width)X\(self.screen_height)\n"
+        result += "\(self.country)--\(self.province)--\(self.city)\n"
+        result += "日志条数:\(self.items.count)"
         return result
     }
     
