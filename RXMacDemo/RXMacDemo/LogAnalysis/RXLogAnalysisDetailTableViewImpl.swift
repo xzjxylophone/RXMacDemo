@@ -45,7 +45,10 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
             self.tableView?.removeTableColumn(tableColumn)
         }
         
-        for key in listModel.showPropertyNames {
+        var showKeys: [String] = []
+        showKeys.append("realIndex")
+        showKeys += listModel.showPropertyNames
+        for key in showKeys {
             let tableColumn: NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier.init(key))
             tableColumn.title = key
             let configModel: RXLognalysisConfigModel = RXLogAnalysisManager.sharedInstance.configModel(key: key)
@@ -65,6 +68,9 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         let key: String = (tableColumn?.identifier.rawValue)!
         let model: RXLogAnalysisDetailModel = self.dataArray[row]
+        if key.elementsEqual("realIndex") {
+            return String(row) + "/" + String(model.realIndex)
+        }
         return model.getValue(listModel: listModel, key: key)
     }
     func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {

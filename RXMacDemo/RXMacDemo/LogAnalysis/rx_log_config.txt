@@ -13,7 +13,7 @@ event,140
 event_id,500
 sub_sender,200
 app_class_vendor,100
-app_class_linecode,100
+app_class_linecode,150
 app_status_description,500
 app_origin_data,200
 

@@ -38,18 +38,17 @@ class RXLogAnalysisManager: NSObject {
             let width = strAry[1]
             let config: RXLognalysisConfigModel = RXLognalysisConfigModel(key: key, width: width)
             
-            // 放在其他地方做缓存用
-            if key.elementsEqual("time") {
-                config.showKey = "showTime"
-                config.action = {(value: String) -> String in
-                    if value.count < 11 {
-                        return value
-                    } else {
-                        let index = value.index(value.startIndex, offsetBy: 11)
-                        return String(value.suffix(from: index))
-                    }
-                }
-            }
+//            // 放在其他地方做缓存用
+//            if key.elementsEqual("time") {
+//                config.action = {(value: String) -> String in
+//                    if value.count < 11 {
+//                        return value
+//                    } else {
+//                        let index = value.index(value.startIndex, offsetBy: 11)
+//                        return String(value.suffix(from: index))
+//                    }
+//                }
+//            }
             
             
             // 添加到字典中

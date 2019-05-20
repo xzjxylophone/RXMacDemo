@@ -59,26 +59,24 @@ class RXLogAnalysisListModel: NSObject {
     var city: String = ""
     var country: String = ""
     
-    
+    // 基本信息是否加载
     var isBaseInfoLoad: Bool = false
     
+    // 非空的基本信息
     let nonnullPropertyNames: [String] =
         ["date", "app_kid_id", "app_class_id", "app_room_id"]
+    // 空的基本信息
     let nullablePropertyNames: [String] =
         ["app_build_version", "app_version", "os_version", "model", "province", "ip",
          "user_id", "distinct_id", "network_type", "app_teacher_id", "carrier",
          "manufacturer", "wifi", "screen_width", "screen_height", "lib", "os", "lib_version", "city", "country"]
  
     
+    // 需要显示的列表
+    let showPropertyNames: [String] = ["time", "event", "event_id", "type", "e_level", "app_class_vendor", "app_class_linecode",
+                                       "sender", "sub_sender", "module", "sub_module", "app_status_code", "app_status_description",
+                                       "reason", "app_origin_data"]
     
-    let showPropertyNames: [String] = ["time", "event_id", "e_level", "app_class_vendor", "app_class_linecode",
-                                       "app_status_code", "app_status_description"]
-    
-    // 剩余的
-    let showPropertyNames2: [String] = ["time", "event", "event_id", "type",
-                                       "reason", "sender", "sub_sender", "module",
-                                       "sub_module", "e_level", "app_class_vendor", "app_class_linecode",
-                                       "app_status_code", "app_status_description", "app_origin_data"]
     
     
     func setBaseInfo(values: [String]) -> Bool {

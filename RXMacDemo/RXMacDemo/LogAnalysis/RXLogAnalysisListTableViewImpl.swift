@@ -96,6 +96,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         // https://stackoverflow.com/questions/628583/regular-expression-to-split-on-commas-not-enclosed-in-parenthesis
         // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
         let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
+        var realIndex: Int = 0
         for line in myStrings {
             if line.count == 0 {
                 continue
@@ -108,7 +109,9 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
                     let setResult = model.setBaseInfo(values: values)
                     print("\(setResult)")
                 }
-                let item:RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
+                let item: RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
+                item.realIndex = realIndex
+                realIndex += 1
                 items.append(item)
             
             }
@@ -130,6 +133,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         // https://stackoverflow.com/questions/13267840/string-split-on-comma-exclude-comma-in-double-quote-and-split-adjacent-commas
         let pattern: String = ",(?=(?:(?:[^\"]*\"){2})*[^\"]*$)"
         var isFirst = true
+        var realIndex: Int = 0;
         for line in myStrings {
             if line.count == 0 {
                 continue
@@ -139,6 +143,9 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
             } else {
                 let values: [String] = line.split(using: pattern.r)
                 let item:RXLogAnalysisDetailModel = RXLogAnalysisDetailModel.init(_values: values)
+                item.realIndex = realIndex
+                // swift 没有++？
+                realIndex = realIndex + 1
                 resultArray.append(item)
             }
         }

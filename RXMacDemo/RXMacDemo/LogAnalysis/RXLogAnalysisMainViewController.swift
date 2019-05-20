@@ -38,9 +38,6 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         }
         
         self.view.addSubview(self.functionView)
-        let layer: CALayer = CALayer()
-        self.functionView.layer = layer
-        self.functionView.layer?.backgroundColor = NSColor.blue.cgColor
         self.functionView.snp.makeConstraints { (make) in
             make.width.equalTo(200)
             make.right.equalTo(self.view).offset(0)
