@@ -26,10 +26,10 @@
 		584BE99122925DB600FE7C0B /* RXLogAnalysisListTableViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE98422925DB600FE7C0B /* RXLogAnalysisListTableViewImpl.swift */; };
 		584BE99222925DB600FE7C0B /* RXLogAnalysisDetailTableViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE98522925DB600FE7C0B /* RXLogAnalysisDetailTableViewImpl.swift */; };
 		584BE9972292E0CD00FE7C0B /* rx_log_event.txt in Resources */ = {isa = PBXBuildFile; fileRef = 584BE9962292E0CD00FE7C0B /* rx_log_event.txt */; };
-		584BE9992292E20600FE7C0B /* RXLogAnalysisFunctionColumnImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9982292E20600FE7C0B /* RXLogAnalysisFunctionColumnImpl.swift */; };
-		584BE99B2292E21000FE7C0B /* RXLogAnalysisFunctionRowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE99A2292E21000FE7C0B /* RXLogAnalysisFunctionRowImpl.swift */; };
-		584BE99D2292E29600FE7C0B /* RXLogAnalysisFunctionImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE99C2292E29600FE7C0B /* RXLogAnalysisFunctionImpl.swift */; };
-		584BE9A12292EA3400FE7C0B /* RXLogAnalysisColumnRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9A02292EA3400FE7C0B /* RXLogAnalysisColumnRowViewController.swift */; };
+		584BE9A32292EAAD00FE7C0B /* RXLAColumnRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9A22292EAAD00FE7C0B /* RXLAColumnRowViewController.swift */; };
+		584BE9AD2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9AA2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift */; };
+		584BE9AE2292EB2800FE7C0B /* RXLAFunctionImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9AB2292EB2800FE7C0B /* RXLAFunctionImpl.swift */; };
+		584BE9AF2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9AC2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +56,10 @@
 		584BE98422925DB600FE7C0B /* RXLogAnalysisListTableViewImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisListTableViewImpl.swift; sourceTree = "<group>"; };
 		584BE98522925DB600FE7C0B /* RXLogAnalysisDetailTableViewImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisDetailTableViewImpl.swift; sourceTree = "<group>"; };
 		584BE9962292E0CD00FE7C0B /* rx_log_event.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = rx_log_event.txt; sourceTree = "<group>"; };
-		584BE9982292E20600FE7C0B /* RXLogAnalysisFunctionColumnImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisFunctionColumnImpl.swift; sourceTree = "<group>"; };
-		584BE99A2292E21000FE7C0B /* RXLogAnalysisFunctionRowImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisFunctionRowImpl.swift; sourceTree = "<group>"; };
-		584BE99C2292E29600FE7C0B /* RXLogAnalysisFunctionImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisFunctionImpl.swift; sourceTree = "<group>"; };
-		584BE9A02292EA3400FE7C0B /* RXLogAnalysisColumnRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLogAnalysisColumnRowViewController.swift; sourceTree = "<group>"; };
+		584BE9A22292EAAD00FE7C0B /* RXLAColumnRowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAColumnRowViewController.swift; sourceTree = "<group>"; };
+		584BE9AA2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAFunctionColumnImpl.swift; sourceTree = "<group>"; };
+		584BE9AB2292EB2800FE7C0B /* RXLAFunctionImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAFunctionImpl.swift; sourceTree = "<group>"; };
+		584BE9AC2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAFunctionRowImpl.swift; sourceTree = "<group>"; };
 		A64A7E3E3A46EA6B9C1B894B /* Pods-RXMacDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXMacDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RXMacDemo/Pods-RXMacDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,9 +164,6 @@
 			children = (
 				584BE99E2292EA0900FE7C0B /* SubFunction */,
 				584BE98222925DB600FE7C0B /* RXLogAnalysisFunctionView.swift */,
-				584BE99C2292E29600FE7C0B /* RXLogAnalysisFunctionImpl.swift */,
-				584BE9982292E20600FE7C0B /* RXLogAnalysisFunctionColumnImpl.swift */,
-				584BE99A2292E21000FE7C0B /* RXLogAnalysisFunctionRowImpl.swift */,
 			);
 			path = FunctionView;
 			sourceTree = "<group>";
@@ -191,7 +188,10 @@
 		584BE99F2292EA0900FE7C0B /* ColumnRow */ = {
 			isa = PBXGroup;
 			children = (
-				584BE9A02292EA3400FE7C0B /* RXLogAnalysisColumnRowViewController.swift */,
+				584BE9A22292EAAD00FE7C0B /* RXLAColumnRowViewController.swift */,
+				584BE9AB2292EB2800FE7C0B /* RXLAFunctionImpl.swift */,
+				584BE9AA2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift */,
+				584BE9AC2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift */,
 			);
 			path = ColumnRow;
 			sourceTree = "<group>";
@@ -344,13 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				584BE9992292E20600FE7C0B /* RXLogAnalysisFunctionColumnImpl.swift in Sources */,
+				584BE9AE2292EB2800FE7C0B /* RXLAFunctionImpl.swift in Sources */,
 				584BE98D22925DB600FE7C0B /* RXLogAnalysisManager.swift in Sources */,
-				584BE99D2292E29600FE7C0B /* RXLogAnalysisFunctionImpl.swift in Sources */,
+				584BE9A32292EAAD00FE7C0B /* RXLAColumnRowViewController.swift in Sources */,
 				584BE98F22925DB600FE7C0B /* RXLogAnalysisDefine.swift in Sources */,
 				584BE98A22925DB600FE7C0B /* RXLogAnalysisListModel.swift in Sources */,
-				584BE9A12292EA3400FE7C0B /* RXLogAnalysisColumnRowViewController.swift in Sources */,
-				584BE99B2292E21000FE7C0B /* RXLogAnalysisFunctionRowImpl.swift in Sources */,
 				584BE98722925DB600FE7C0B /* RXLogAnalysisMainViewController.swift in Sources */,
 				584BE99222925DB600FE7C0B /* RXLogAnalysisDetailTableViewImpl.swift in Sources */,
 				584BE98C22925DB600FE7C0B /* RXLogAnalysisDetailModel.swift in Sources */,
@@ -358,6 +356,8 @@
 				5826B9662253982A0020C47C /* ViewController.swift in Sources */,
 				5826B9642253982A0020C47C /* AppDelegate.swift in Sources */,
 				584BE99122925DB600FE7C0B /* RXLogAnalysisListTableViewImpl.swift in Sources */,
+				584BE9AD2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift in Sources */,
+				584BE9AF2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift in Sources */,
 				584BE98B22925DB600FE7C0B /* RXLognalysisConfigModel.swift in Sources */,
 				584BE98822925DB600FE7C0B /* RXLogAnalysisMainWindowController.swift in Sources */,
 				584BE98E22925DB600FE7C0B /* RXLogAnalysisContext.swift in Sources */,

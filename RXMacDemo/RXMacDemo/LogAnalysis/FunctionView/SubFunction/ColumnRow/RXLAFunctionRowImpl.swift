@@ -1,5 +1,5 @@
 //
-//  RXLogAnalysisFunctionRowImpl.swift
+//  RXLAFunctionRowImpl.swift
 //  RXMacDemo
 //
 //  Created by Rush.D.Xzj on 2019/5/20.
@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class RXLogAnalysisFunctionRowImpl: RXLogAnalysisFunctionImpl {
+class RXLAFunctionRowImpl: RXLAFunctionImpl {
 
 }

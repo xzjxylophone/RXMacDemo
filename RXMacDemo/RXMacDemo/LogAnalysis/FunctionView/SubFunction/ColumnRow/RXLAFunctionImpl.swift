@@ -1,5 +1,5 @@
 //
-//  RXLogAnalysisFunctionImpl.swift
+//  RXLAFunctionImpl.swift
 //  RXMacDemo
 //
 //  Created by Rush.D.Xzj on 2019/5/20.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RXLogAnalysisFunctionImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource {
+class RXLAFunctionImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     
     var dataDic: [String: Bool] = [:] {
         didSet {
