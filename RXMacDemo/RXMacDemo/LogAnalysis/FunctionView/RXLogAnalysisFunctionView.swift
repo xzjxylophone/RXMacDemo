@@ -15,6 +15,9 @@ class RXLogAnalysisFunctionView: NSView {
     let columnControlTableView: NSTableView = NSTableView()
     let rowControlScrollView: NSScrollView = NSScrollView()
     let rowControlTableView: NSTableView = NSTableView()
+    
+    let columnImpl: RXLogAnalysisFunctionColumnImpl = RXLogAnalysisFunctionColumnImpl()
+    let rowImpl: RXLogAnalysisFunctionRowImpl = RXLogAnalysisFunctionRowImpl()
 
     
     override init(frame frameRect: NSRect) {
@@ -25,6 +28,15 @@ class RXLogAnalysisFunctionView: NSView {
         
         self.columnControlScrollView.contentView.documentView = self.columnControlTableView
         self.rowControlScrollView.contentView.documentView = self.rowControlTableView
+        
+        self.columnControlTableView.delegate = self.columnImpl
+        self.columnControlTableView.dataSource = self.columnImpl
+        self.columnControlTableView.usesAlternatingRowBackgroundColors = true
+        self.columnControlTableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier.init("column")))
+        self.rowControlTableView.delegate = self.rowImpl
+        self.rowControlTableView.dataSource = self.rowImpl
+        self.rowControlTableView.usesAlternatingRowBackgroundColors = true
+        self.rowControlTableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier.init("row")))
         
         self.addSubview(self.topView)
         self.addSubview(self.columnControlScrollView)
@@ -42,11 +54,6 @@ class RXLogAnalysisFunctionView: NSView {
             make.right.equalTo(self).offset(0)
         }
         
-//        make.left.equalTo(self.listScrollView.snp.right).offset(0)
-//        make.right.equalTo(self.functionView.snp.left).offset(0)
-//        make.top.equalTo(self.view).offset(0)
-//        make.bottom.equalTo(self.view).offset(0)
-        
         self.columnControlScrollView.snp.makeConstraints { (make) in
             make.height.equalTo(self).multipliedBy(0.3)
             make.left.equalTo(self).offset(0)
@@ -60,6 +67,13 @@ class RXLogAnalysisFunctionView: NSView {
             make.top.equalTo(self.columnControlScrollView.snp.bottom).offset(0)
             make.right.equalTo(self).offset(0)
         }
+    }
+    
+    func reload(listModel: RXLogAnalysisListModel) {
+        self.columnImpl.dataDic = listModel.showColumnDic
+        self.rowImpl.dataDic = listModel.showRowDic
+        self.columnControlTableView.reloadData()
+        self.rowControlTableView.reloadData()
     }
     
     required init?(coder decoder: NSCoder) {

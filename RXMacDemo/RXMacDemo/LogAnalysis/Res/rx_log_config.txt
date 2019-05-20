@@ -11,6 +11,7 @@ time,150
 type,100
 event,140
 event_id,500
+event_id_name,300
 sub_sender,200
 app_class_vendor,100
 app_class_linecode,150

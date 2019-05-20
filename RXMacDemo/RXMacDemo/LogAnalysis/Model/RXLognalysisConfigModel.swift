@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+@objcMembers
 class RXLognalysisConfigModel: NSObject {
     // 只是配置一些比较基础的信息，不做任何其他复杂的逻辑处理
     var key: String = ""

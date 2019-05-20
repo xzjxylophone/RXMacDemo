@@ -155,6 +155,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         let model: RXLogAnalysisListModel = self.dataArray[row]
         RXLogAnalysisManager.sharedInstance.context?.detailImpl.reload(listModel: model)
+        RXLogAnalysisManager.sharedInstance.context?.functionView?.reload(listModel: model)
         return true
     }
     

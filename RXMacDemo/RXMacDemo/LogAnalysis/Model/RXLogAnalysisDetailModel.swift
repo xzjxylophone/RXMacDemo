@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+@objcMembers
 class RXLogAnalysisDetailModel: NSObject {
     
     var values: [String] = []
@@ -20,12 +20,13 @@ class RXLogAnalysisDetailModel: NSObject {
     var showKeyValueCache: [String: Any] = [:]
     
     
-//    let showPropertyNames: [String] = ["time", "event_id", "e_level", "app_class_vendor", "app_class_linecode", "app_status_code", "app_status_description"]
+//    let showColumnArray: [String] = ["time", "event_id", "e_level", "app_class_vendor", "app_class_linecode", "app_status_code", "app_status_description"]
     
     var time: String = ""
     var show_time: String = ""
-    var event_: String = ""
+    var event: String = ""
     var event_id: String = ""
+    var event_id_name: String = ""
     var type: String = ""
     var e_level: String = ""
     var app_class_vendor: String = ""
@@ -50,9 +51,12 @@ class RXLogAnalysisDetailModel: NSObject {
         return result;
     }
     
-    func getValue(listModel: RXLogAnalysisListModel, key: String) -> String {
+    func getValue(listModel: RXLogAnalysisListModel, key: String, row: Int) -> String {
         var result: String = ""
-        if key.elementsEqual("time") {
+        if key.elementsEqual("realIndex") {
+            return String(row) + "/" + String(self.realIndex)
+        }
+        else if key.elementsEqual("time") {
             if self.show_time.count == 0 {
                 self.time = self.getValue(key: key, keys: listModel.keys)
                 if self.time.count < 11 {
@@ -63,7 +67,8 @@ class RXLogAnalysisDetailModel: NSObject {
                 }
             }
             result = self.show_time
-        } else if key.elementsEqual("app_class_vendor") {
+        }
+        else if key.elementsEqual("app_class_vendor") {
             if self.show_app_class_vendor.count == 0 {
                 self.app_class_vendor = self.getValue(key: key, keys: listModel.keys)
                 if self.app_class_vendor.count == 0 {
@@ -74,32 +79,32 @@ class RXLogAnalysisDetailModel: NSObject {
                 }
             }
             result = self.show_app_class_vendor
-        } else {
-            result = self.getValue(key: key, keys: listModel.keys)
         }
-        
-        
-        
-        
-        
-//        let index: Int = listModel.keys.index(of: key) ?? -1
-//        if index == -1 {
-//            return ""
-//        }
-//        var result: String = self.values[index]
-//        let configModel = RXLogAnalysisManager.sharedInstance.configModel(key: key)
-//        if configModel.showKey.count == 0 {
-//        } else {
-//
-//            let showKey: String = configModel.showKey
-//            let value: String? = self.showKeyValueCache[showKey] as? String
-//            if value != nil {
-//                result = value!
-//            } else {
-//                let tmp: String = configModel.action?(result) ?? ""
-//                result = tmp
-//            }
-//        }
+        else if key.elementsEqual("event_id_name") {
+            if self.event_id_name.count == 0 {
+                let event_id: String = self.getValue(listModel: listModel, key: "event_id", row: row)
+                let tmpEventName: String? = RXLogAnalysisManager.sharedInstance.eventMapping[event_id]
+                if tmpEventName != nil {
+                    self.event_id_name = tmpEventName!
+                } else {
+                    self.event_id_name = "未描述"
+                }
+            }
+            result = self.event_id_name
+            
+        }
+        else {
+            let tmp: Any? = self.value(forKey: key)
+            if tmp != nil && ((self.showKeyValueCache[key] as? Bool) ?? false) {
+//                print("cache data")
+                result = tmp as! String
+            } else {
+//                print("first data")
+                result = self.getValue(key: key, keys: listModel.keys)
+                self.setValue(result, forKey: key)
+                self.showKeyValueCache[key] = Bool(true)
+            }
+        }
         return result
     }
 }

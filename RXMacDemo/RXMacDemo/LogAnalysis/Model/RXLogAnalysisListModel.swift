@@ -25,7 +25,18 @@ class RXLogAnalysisListModel: NSObject {
     // 哪些列是显示，哪些列是不显示的
     var showDic: [String: Bool] = [:]
     
-    var items: [RXLogAnalysisDetailModel] = []
+    var items: [RXLogAnalysisDetailModel] = [] {
+        didSet {
+            for model in self.items {
+                // 这里不能直接使用self.event_id,还没有完全解析数据了
+                let key = model.getValue(listModel: self, key: "event_id", row: 0)
+                let value: Bool? = self.showRowDic[key]
+                if value == nil {
+                    self.showRowDic[key] = true
+                }
+            }
+        }
+    }
     
     var fileFullPath: String = ""
     var fileName: String = ""
@@ -72,10 +83,12 @@ class RXLogAnalysisListModel: NSObject {
          "manufacturer", "wifi", "screen_width", "screen_height", "lib", "os", "lib_version", "city", "country"]
  
     
+    var showRowDic: [String: Bool] = [:]
+    var showColumnDic: [String: Bool] = [:]
     // 需要显示的列表
-    let showPropertyNames: [String] = ["time", "event", "event_id", "type", "e_level", "app_class_vendor", "app_class_linecode",
-                                       "sender", "sub_sender", "module", "sub_module", "app_status_code", "app_status_description",
-                                       "reason", "app_origin_data"]
+    var showColumnArray: [String] = []
+    
+    
     
     
     
@@ -86,6 +99,15 @@ class RXLogAnalysisListModel: NSObject {
         }
         if self.keys.count != values.count {
             return false
+        }
+        
+        self.showColumnArray = ["realIndex", "time", "event", "event_id", "event_id_name",
+        "type", "e_level", "app_class_vendor", "app_class_linecode",
+        "sender", "sub_sender", "module", "sub_module", "app_status_code", "app_status_description",
+        "reason", "app_origin_data"]
+        
+        for tmp in self.showColumnArray {
+            self.showColumnDic[tmp] = Bool(true)
         }
         
         

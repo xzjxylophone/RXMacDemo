@@ -11,7 +11,8 @@ import Cocoa
 class RXLogAnalysisContext: NSObject {
     let listImpl: RXLogAnalysisListTableViewImpl = RXLogAnalysisListTableViewImpl()
     let detailImpl: RXLogAnalysisDetailTableViewImpl = RXLogAnalysisDetailTableViewImpl()
-
+    
+    weak var functionView: RXLogAnalysisFunctionView?
     
     func load() {
         self.listImpl.load(path: "/Users/rush/Desktop/log_analysis")
