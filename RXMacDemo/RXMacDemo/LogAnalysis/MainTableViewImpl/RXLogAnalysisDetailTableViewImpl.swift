@@ -51,7 +51,7 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
             tableColumn.title = key
             let configModel: RXLognalysisConfigModel = RXLogAnalysisManager.sharedInstance.configModel(key: key)
             tableColumn.minWidth = CGFloat(configModel.width);
-            tableColumn.isEditable = false
+//            tableColumn.isEditable = false
             self.tableView?.addTableColumn(tableColumn)
         }
     }

@@ -151,11 +151,19 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         }
         return resultArray
     }
-    // MARK: NSTableViewDelegate
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        let model: RXLogAnalysisListModel = self.dataArray[row]
+    
+    func showDetail(index: Int) {
+        if (index < 0 || index >= self.dataArray.count) {
+            return
+        }
+        let model: RXLogAnalysisListModel = self.dataArray[index]
         RXLogAnalysisManager.sharedInstance.context?.detailImpl.reload(listModel: model)
         RXLogAnalysisManager.sharedInstance.context?.functionView?.reload(listModel: model)
+    }
+    
+    // MARK: NSTableViewDelegate
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        self.showDetail(index: row)
         return true
     }
     

@@ -68,6 +68,8 @@ class RXLogAnalysisMainViewController: NSViewController, NSTableViewDelegate, NS
         self.context.listImpl.tableView = self.listTableView
         self.context.detailImpl.tableView = self.detailTableView
         self.context.functionView = self.functionView
+        
+        
         self.context.load()
 
     }

@@ -30,6 +30,7 @@
 		584BE9AD2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9AA2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift */; };
 		584BE9AE2292EB2800FE7C0B /* RXLAFunctionImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9AB2292EB2800FE7C0B /* RXLAFunctionImpl.swift */; };
 		584BE9AF2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9AC2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift */; };
+		584BE9B22293A14200FE7C0B /* RXFunctionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9B12293A14200FE7C0B /* RXFunctionItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		584BE9AA2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAFunctionColumnImpl.swift; sourceTree = "<group>"; };
 		584BE9AB2292EB2800FE7C0B /* RXLAFunctionImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAFunctionImpl.swift; sourceTree = "<group>"; };
 		584BE9AC2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RXLAFunctionRowImpl.swift; sourceTree = "<group>"; };
+		584BE9B12293A14200FE7C0B /* RXFunctionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXFunctionItem.swift; sourceTree = "<group>"; };
 		A64A7E3E3A46EA6B9C1B894B /* Pods-RXMacDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXMacDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RXMacDemo/Pods-RXMacDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 		5826B9622253982A0020C47C /* RXMacDemo */ = {
 			isa = PBXGroup;
 			children = (
+				584BE9B02293A13200FE7C0B /* Global */,
 				5826B9732253996C0020C47C /* LogAnalysis */,
 				5826B9632253982A0020C47C /* AppDelegate.swift */,
 				5826B9652253982A0020C47C /* ViewController.swift */,
@@ -194,6 +197,14 @@
 				584BE9AC2292EB2800FE7C0B /* RXLAFunctionRowImpl.swift */,
 			);
 			path = ColumnRow;
+			sourceTree = "<group>";
+		};
+		584BE9B02293A13200FE7C0B /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				584BE9B12293A14200FE7C0B /* RXFunctionItem.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		A7FE38283962B3DAC9AC1612 /* Frameworks */ = {
@@ -346,6 +357,7 @@
 			files = (
 				584BE9AE2292EB2800FE7C0B /* RXLAFunctionImpl.swift in Sources */,
 				584BE98D22925DB600FE7C0B /* RXLogAnalysisManager.swift in Sources */,
+				584BE9B22293A14200FE7C0B /* RXFunctionItem.swift in Sources */,
 				584BE9A32292EAAD00FE7C0B /* RXLAColumnRowViewController.swift in Sources */,
 				584BE98F22925DB600FE7C0B /* RXLogAnalysisDefine.swift in Sources */,
 				584BE98A22925DB600FE7C0B /* RXLogAnalysisListModel.swift in Sources */,

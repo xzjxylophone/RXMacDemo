@@ -15,7 +15,13 @@ class RXLogAnalysisContext: NSObject {
     weak var functionView: RXLogAnalysisFunctionView?
     
     func load() {
-        self.listImpl.load(path: "/Users/rush/Desktop/log_analysis")
+//        self.listImpl.load(path: "/Users/rush/Desktop/log_analysis")
+        // 这行代码,显示没有此文件
+        self.listImpl.load(path: "/Users⁩/⁨rush⁩/Documents⁩/work⁩/workflow⁩/20190521⁩")
+        // 这行代码显示有此文件
+        self.listImpl.load(path: "/Users/rush/Documents/work/workflow/20190521")
+        
+        self.listImpl.showDetail(index: 0)
     }
     
 }
