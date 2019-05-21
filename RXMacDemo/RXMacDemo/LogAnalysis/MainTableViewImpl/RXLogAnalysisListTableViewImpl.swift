@@ -157,8 +157,11 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
             return
         }
         let model: RXLogAnalysisListModel = self.dataArray[index]
-        RXLogAnalysisManager.sharedInstance.context?.detailImpl.reload(listModel: model)
-        RXLogAnalysisManager.sharedInstance.context?.functionView?.reload(listModel: model)
+        
+        let context: RXLogAnalysisContext? = RXLogAnalysisManager.sharedInstance.context
+        context?.detailImpl.reload(listModel: model)
+        context?.functionView?.reload(listModel: model)
+        context?.functionView?.delegate = context?.detailImpl
     }
     
     // MARK: NSTableViewDelegate

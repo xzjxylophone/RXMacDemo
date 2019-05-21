@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource {
+class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableViewDataSource, RXLogAnalysisFunctionViewDelegate {
     var listModel: RXLogAnalysisListModel = RXLogAnalysisListModel()
     var dataArray: [RXLogAnalysisDetailModel] = []
     weak var tableView: NSTableView? = nil {
@@ -38,8 +38,10 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
     func reload(listModel: RXLogAnalysisListModel) {
         self.listModel = listModel
         self.dataArray = listModel.items
-        self.tableView?.reloadData();
-        
+        self.reload()
+    }
+    
+    func reload() {
         let tableColumnArray: [NSTableColumn] = self.tableView?.tableColumns ?? []
         for tableColumn in tableColumnArray {
             self.tableView?.removeTableColumn(tableColumn)
@@ -51,9 +53,10 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
             tableColumn.title = key
             let configModel: RXLognalysisConfigModel = RXLogAnalysisManager.sharedInstance.configModel(key: key)
             tableColumn.minWidth = CGFloat(configModel.width);
-//            tableColumn.isEditable = false
+            //            tableColumn.isEditable = false
             self.tableView?.addTableColumn(tableColumn)
         }
+        self.tableView?.reloadData()
     }
     
     // MARK: - NSTableViewDataSource
@@ -73,5 +76,12 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
             let textFieldCell:NSTextFieldCell = cell as! NSTextFieldCell
             textFieldCell.font = NSFont.systemFont(ofSize: 17)
         }
+    }
+    
+    // MARK: RXLogAnalysisFunctionViewDelegate
+    func enterLeaveRoomAction() {
+        print("enterLeaveRoomAction11111111111")
+        self.dataArray = self.listModel.getEnterLeaveRoomItems()
+        self.reload()
     }
 }

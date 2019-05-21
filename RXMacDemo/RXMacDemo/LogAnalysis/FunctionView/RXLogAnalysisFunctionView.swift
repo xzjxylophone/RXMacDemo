@@ -7,6 +7,10 @@
 //
 
 import Cocoa
+protocol RXLogAnalysisFunctionViewDelegate: NSObjectProtocol {
+    func enterLeaveRoomAction()
+}
+
 
 class RXLogAnalysisFunctionView: NSView, NSTableViewDelegate, NSTableViewDataSource {
     
@@ -16,6 +20,8 @@ class RXLogAnalysisFunctionView: NSView, NSTableViewDelegate, NSTableViewDataSou
     var listModel: RXLogAnalysisListModel = RXLogAnalysisListModel()
     
     var itemArray: [RXFunctionItem] = []
+    
+    weak var delegate: RXLogAnalysisFunctionViewDelegate? = nil
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -102,7 +108,8 @@ class RXLogAnalysisFunctionView: NSView, NSTableViewDelegate, NSTableViewDataSou
         print("diagnoseAction")
     }
     @objc func enterLeaveRoomAction() {
-        print("enterLeaveRoomAction")
+//        print("enterLeaveRoomAction")
+        self.delegate?.enterLeaveRoomAction()
     }
     @objc func crashCheckAction() {
         print("crashCheckAction")

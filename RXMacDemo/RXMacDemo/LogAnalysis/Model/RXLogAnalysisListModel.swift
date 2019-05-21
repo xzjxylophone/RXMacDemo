@@ -38,6 +38,21 @@ class RXLogAnalysisListModel: NSObject {
         }
     }
     
+    // 获取所有进入教室的事件
+    var enterLeaveRoomItems: [RXLogAnalysisDetailModel] = []
+    func getEnterLeaveRoomItems() -> [RXLogAnalysisDetailModel] {
+        if self.enterLeaveRoomItems.count == 0 {
+            for item in self.items {
+                let event_id: String = item.getValue(key: "event_id", keys: self.keys)
+                let value: Any? = RXLogAnalysisManager.sharedInstance.enterLeaveRoomMapping[event_id]
+                if value != nil {
+                    self.enterLeaveRoomItems.append(item)
+                }
+            }
+        }
+        return self.enterLeaveRoomItems
+    }
+    
     var fileFullPath: String = ""
     var fileName: String = ""
     

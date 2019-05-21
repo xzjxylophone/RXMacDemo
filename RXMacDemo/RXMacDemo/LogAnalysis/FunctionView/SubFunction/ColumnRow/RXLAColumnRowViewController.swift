@@ -10,11 +10,6 @@ import Cocoa
 
 class RXLAColumnRowViewController: NSViewController {
 
-    let columnControlScrollView: NSScrollView = NSScrollView()
-    let columnControlTableView: NSTableView = NSTableView()
-    let rowControlScrollView: NSScrollView = NSScrollView()
-    let rowControlTableView: NSTableView = NSTableView()
-    
     let columnImpl: RXLAFunctionColumnImpl = RXLAFunctionColumnImpl()
     let rowImpl: RXLAFunctionRowImpl = RXLAFunctionRowImpl()
     
@@ -23,38 +18,24 @@ class RXLAColumnRowViewController: NSViewController {
         // Do view setup here.
         
         
+        self.columnImpl.setup()
+        self.rowImpl.setup()
         
-        
-        self.columnControlScrollView.contentView.documentView = self.columnControlTableView
-        self.rowControlScrollView.contentView.documentView = self.rowControlTableView
-        
-        self.columnControlTableView.delegate = self.columnImpl
-        self.columnControlTableView.dataSource = self.columnImpl
-        self.columnControlTableView.usesAlternatingRowBackgroundColors = true
-        self.columnControlTableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier.init("column")))
-        self.rowControlTableView.delegate = self.rowImpl
-        self.rowControlTableView.dataSource = self.rowImpl
-        self.rowControlTableView.usesAlternatingRowBackgroundColors = true
-        self.rowControlTableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier.init("row")))
-        
-        self.view.addSubview(self.columnControlScrollView)
-        self.view.addSubview(self.rowControlScrollView)
-        
-        self.columnControlScrollView.layer?.backgroundColor = NSColor.red.cgColor
-        self.rowControlScrollView.layer?.backgroundColor = NSColor.green.cgColor
+        self.view.addSubview(self.columnImpl.scrollView)
+        self.view.addSubview(self.rowImpl.scrollView)
         
        
-        self.columnControlScrollView.snp.makeConstraints { (make) in
-            make.height.equalTo(self.view).multipliedBy(0.3)
+        self.columnImpl.scrollView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view).multipliedBy(0.3)
             make.left.equalTo(self.view).offset(0)
             make.top.equalTo(self.view).offset(0)
-            make.right.equalTo(self.view).offset(0)
+            make.bottom.equalTo(self.view).offset(0)
         }
         
-        self.rowControlScrollView.snp.makeConstraints { (make) in
-            make.height.equalTo(self.view).multipliedBy(0.3)
-            make.left.equalTo(self.view).offset(0)
-            make.top.equalTo(self.columnControlScrollView.snp.bottom).offset(0)
+        self.rowImpl.scrollView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.view).offset(0)
+            make.left.equalTo(self.columnImpl.scrollView.snp.right).offset(0)
+            make.top.equalTo(self.view).offset(0)
             make.right.equalTo(self.view).offset(0)
         }
     }
@@ -63,7 +44,7 @@ class RXLAColumnRowViewController: NSViewController {
     func reload(listModel: RXLogAnalysisListModel) {
         self.columnImpl.dataDic = listModel.showColumnDic
         self.rowImpl.dataDic = listModel.showRowDic
-        self.columnControlTableView.reloadData()
-        self.rowControlTableView.reloadData()
+        self.columnImpl.tableView.reloadData()
+        self.rowImpl.tableView.reloadData()
     }
 }

@@ -16,23 +16,16 @@ class RXLogAnalysisManager: NSObject {
     var configMapping:[String: Any] = [:]
     
     var eventMapping: [String: String] = [:]
+    var enterLeaveRoomMapping: [String: String] = [:]
     
     override init() {
         super.init()
         self.loadConfig()
         self.loadEvent()
+        self.loadEnterLeaveRoom()
     }
     func loadConfig() {
-        // https://www.jianshu.com/p/049147550443
-        let path = Bundle.main.path(forResource: "rx_log_config", ofType: "txt")
-        let url = URL(fileURLWithPath: path!)
-        let tmpContent: String? = try? String(contentsOf: url)
-        if tmpContent == nil {
-            return
-        }
-        let separatedString: String = "\n"
-        let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
-        let myStrings = content.components(separatedBy: separatedString)
+        let myStrings = self.load(path: "rx_log_config")
         for str in myStrings {
             if str.hasPrefix("//") {
                 continue
@@ -49,16 +42,14 @@ class RXLogAnalysisManager: NSObject {
         }
     }
     func loadEvent() {
-        // https://www.jianshu.com/p/049147550443
-        let path = Bundle.main.path(forResource: "rx_log_event", ofType: "txt")
-        let url = URL(fileURLWithPath: path!)
-        let tmpContent: String? = try? String(contentsOf: url)
-        if tmpContent == nil {
-            return
-        }
-        let separatedString: String = "\n"
-        let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
-        let myStrings = content.components(separatedBy: separatedString)
+        self.load(path: "rx_log_event", mapping: &self.eventMapping)
+    }
+    func loadEnterLeaveRoom() {
+        self.load(path: "rx_log_enterLeaveRoom", mapping: &self.enterLeaveRoomMapping)
+    }
+    
+    func load(path: String,  mapping: inout [String: String]) {
+        let myStrings = self.load(path: path)
         for str in myStrings {
             if str.hasPrefix("//") {
                 continue
@@ -70,8 +61,22 @@ class RXLogAnalysisManager: NSObject {
             let key = strAry[0]
             let value = strAry[1]
             // 添加到字典中
-            self.eventMapping[key] = value
+            mapping[key] = value
         }
+    }
+    
+    func load(path: String) -> [String] {
+        // https://www.jianshu.com/p/049147550443
+        let path = Bundle.main.path(forResource: path, ofType: "txt")
+        let url = URL(fileURLWithPath: path!)
+        let tmpContent: String? = try? String(contentsOf: url)
+        if tmpContent == nil {
+            return []
+        }
+        let separatedString: String = "\n"
+        let content: String = tmpContent!.replacingOccurrences(of: "\r\n", with: separatedString).replacingOccurrences(of: "\r", with: separatedString)
+        let myStrings: [String] = content.components(separatedBy: separatedString)
+        return myStrings
     }
     
     

@@ -1,0 +1,23 @@
+//
+//  rx_log_enterLeaveRoom.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/5/21.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+
+app_kid_classroom_Raptor_enterRoom_success,1
+app_kid_classroom_Raptor_micphone_open_success,1
+app_kid_classroom_Raptor_camera_open_success,1
+app_kid_classroom_Raptor_enterRoom_camera_enable,1
+app_kid_classroom_Raptor_enterRoom_microphone_enable,1
+app_kid_classroom_Raptor_leaveClassRoom,1
+
+
+app_kid_classroom_lightning_enterRoom_lifecycle_enterbackground,1
+app_kid_classroom_lightning_enterRoom_success,1
+app_kid_classroom_lightning_enterRoom,1
+app_kid_classroom_lightning_exitroom_confirm_btnclick,1
+app_kid_classroom_lightning_resetClassroom_clickBtn,1
+
