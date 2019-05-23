@@ -35,7 +35,7 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         
         let tableColumn = NSTableColumn.init(identifier: NSUserInterfaceItemIdentifier.init("description"))
         tableColumn.title = "简要说明"
-        tableColumn.isEditable = false
+//        tableColumn.isEditable = false
         self.tableView?.addTableColumn(tableColumn)
     }
     

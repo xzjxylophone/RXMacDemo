@@ -16,12 +16,23 @@ class RXLogAnalysisContext: NSObject {
     
     func load() {
 //        self.listImpl.load(path: "/Users/rush/Desktop/log_analysis")
-        // 这行代码,显示没有此文件
-        self.listImpl.load(path: "/Users⁩/⁨rush⁩/Documents⁩/work⁩/workflow⁩/20190521⁩")
-        // 这行代码显示有此文件
-        self.listImpl.load(path: "/Users/rush/Documents/work/workflow/20190521")
         
-        self.listImpl.showDetail(index: 0)
+//        // 这行代码,显示没有此文件
+//        self.listImpl.load(path: "/Users⁩/⁨rush⁩/Documents⁩/work⁩/workflow⁩/20190521⁩")
+        
+        
+        
+        DispatchQueue.global().async { [weak self] in
+            // 这行代码显示有此文件
+            self?.listImpl.load(path: "/Users/rush/Documents/work/workflow/20190521")
+            DispatchQueue.main.sync {
+                self?.listImpl.showDetail(index: 0)
+            }
+        }
+        
+        
+        
+        
     }
     
 }
