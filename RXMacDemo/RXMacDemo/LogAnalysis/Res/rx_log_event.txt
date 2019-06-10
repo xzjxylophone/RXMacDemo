@@ -14,12 +14,13 @@ app_kid_classroom_Raptor_enterRoom_camera_enable,Raptor进入教室打开摄像�
 app_kid_classroom_Raptor_enterRoom_microphone_enable,Raptor进入教室打开麦克风
 app_kid_classroom_Raptor_leaveClassRoom,Raptor离开教室
 
-
+app_kid_classroom_lightning_enterRoom_lifecycle_enterforeground,lightning App进入前台
 app_kid_classroom_lightning_enterRoom_lifecycle_enterbackground,lightning App进入后台
 app_kid_classroom_lightning_enterRoom_success,lightning进入教室成功
 app_kid_classroom_lightning_enterRoom,lightning进入教室
 app_kid_classroom_lightning_exitroom_confirm_btnclick,学生点击确认离开教室
 app_kid_classroom_lightning_resetClassroom_clickBtn,学生重置教室
 app_kid_classroom_lightning_changeLine_gossip,收到切线信息
-
+app_kid_classroom_lightning_VKRoomServiceManager_query_roomEvent,教室内轮询
+app_kid_classroom_lightning_VKRoomServiceManager_query_roomEvent_alert,教室内轮询弹出错误提示
 

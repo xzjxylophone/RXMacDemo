@@ -52,7 +52,9 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
             let tableColumn: NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier.init(key))
             tableColumn.title = key
             let configModel: RXLognalysisConfigModel = RXLogAnalysisManager.sharedInstance.configModel(key: key)
-            tableColumn.minWidth = CGFloat(configModel.width);
+            tableColumn.minWidth = 100;
+            tableColumn.maxWidth = CGFloat(configModel.width * 2);
+            tableColumn.width = CGFloat(configModel.width);
             //            tableColumn.isEditable = false
             self.tableView?.addTableColumn(tableColumn)
         }
@@ -82,6 +84,31 @@ class RXLogAnalysisDetailTableViewImpl: NSObject, NSTableViewDelegate, NSTableVi
     func enterLeaveRoomAction() {
         print("enterLeaveRoomAction11111111111")
         self.dataArray = self.listModel.getEnterLeaveRoomItems()
+        self.reload()
+    }
+    func allAction() {
+        self.dataArray = self.listModel.items
+        self.reload()
+    }
+    
+    func inClassAction() {
+        self.dataArray = self.listModel.getInClassItems()
+        self.reload()
+    }
+    func gossipAction() {
+        self.dataArray = self.listModel.getGossipItems()
+        self.reload()
+    }
+    func outClassAction() {
+        self.dataArray = self.listModel.getOutClassItems()
+        self.reload()
+    }
+    func jkClassAction() {
+        self.dataArray = self.listModel.getJkClassItems()
+        self.reload()
+    }
+    func reloadOrTerminateAction() {
+        self.dataArray = self.listModel.getReloadOrTerminateItems()
         self.reload()
     }
 }

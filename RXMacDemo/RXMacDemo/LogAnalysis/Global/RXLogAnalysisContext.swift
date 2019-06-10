@@ -24,8 +24,14 @@ class RXLogAnalysisContext: NSObject {
         
         DispatchQueue.global().async { [weak self] in
             // 这行代码显示有此文件
-            self?.listImpl.load(path: "/Users/rush/Documents/work/workflow/20190521")
+            var path = ""
+            path = "/Users/rush/Documents/work/workflow/20190521"
+            path = "/Users/rush/Documents/work/workflow/20190527"
+            path = "/Users/rush/Documents/work/workflow/20190529"
+            self?.listImpl.load(path: path)
+            // TODO loading view
             DispatchQueue.main.sync {
+                self?.listImpl.tableView?.reloadData()
                 self?.listImpl.showDetail(index: 0)
             }
         }

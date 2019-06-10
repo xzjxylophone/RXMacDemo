@@ -1,0 +1,12 @@
+//
+//  rx_log_reloadOrTerminate.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/5/27.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+app_kid_didfinishlaunching,1
+app_kid_applicationWillTerminate,1
+
+

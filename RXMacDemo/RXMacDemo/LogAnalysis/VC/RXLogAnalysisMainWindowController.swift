@@ -25,6 +25,8 @@ import SnapKit
 //    }
 //}
 
+// 大量数据分析的Autorelease
+
 class RXLogAnalysisMainWindowController: NSWindowController {
     
 //    @IBOutlet weak var listScrollView: NSScrollView?

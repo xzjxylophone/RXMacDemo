@@ -53,6 +53,84 @@ class RXLogAnalysisListModel: NSObject {
         return self.enterLeaveRoomItems
     }
     
+    // 获取所有教室内事件
+    var inClassItems: [RXLogAnalysisDetailModel] = []
+    func getInClassItems() -> [RXLogAnalysisDetailModel] {
+        if self.inClassItems.count == 0 {
+            for item in self.items {
+                let app_class_id: String = item.getValue(key: "app_class_id", keys: self.keys)
+                let event_id: String = item.getValue(key: "event_id", keys: self.keys)
+                if app_class_id.count > 0 && event_id.count > 0 {
+                    self.inClassItems.append(item)
+                }
+            }
+        }
+        return self.inClassItems
+    }
+    
+    // 获取所有教室外事件
+    var outClassItems: [RXLogAnalysisDetailModel] = []
+    func getOutClassItems() -> [RXLogAnalysisDetailModel] {
+        if self.outClassItems.count == 0 {
+            for item in self.items {
+                let app_class_id: String = item.getValue(key: "app_class_id", keys: self.keys)
+                let event: String = item.getValue(key: "event", keys: self.keys)
+                if app_class_id.count == 0 && event.hasPrefix("app_") {
+                    self.outClassItems.append(item)
+                }
+            }
+        }
+        return self.outClassItems
+    }
+    
+    // 获取所有监课事件
+    var jkClassItems: [RXLogAnalysisDetailModel] = []
+    func getJkClassItems() -> [RXLogAnalysisDetailModel] {
+        if self.jkClassItems.count == 0 {
+            for item in self.items {
+                let event: String = item.getValue(key: "event", keys: self.keys)
+                if event.hasPrefix("jk_") {
+                    self.jkClassItems.append(item)
+                }
+            }
+        }
+        return self.jkClassItems
+    }
+    
+    // 获取所有监课事件
+    var gossipItems: [RXLogAnalysisDetailModel] = []
+    func getGossipItems() -> [RXLogAnalysisDetailModel] {
+        if self.gossipItems.count == 0 {
+            for item in self.items {
+                let event_id: String = item.getValue(key: "event_id", keys: self.keys)
+                if event_id.hasPrefix("app_kid_classroom_lightning_VKRoomServiceManager_query_roomEvent") {
+                    self.gossipItems.append(item)
+                }
+            }
+        }
+        return self.gossipItems
+    }
+    
+    
+    
+    
+    // 
+    var reloadOrTerminateItems: [RXLogAnalysisDetailModel] = []
+    func getReloadOrTerminateItems() -> [RXLogAnalysisDetailModel] {
+        if self.reloadOrTerminateItems.count == 0 {
+            for item in self.items {
+                let event: String = item.getValue(key: "event", keys: self.keys)
+                let value: Any? = RXLogAnalysisManager.sharedInstance.reloadOrTerminateMapping[event]
+                if value != nil {
+                    self.reloadOrTerminateItems.append(item)
+                }
+            }
+        }
+        return self.reloadOrTerminateItems
+    }
+    
+    
+    
     var fileFullPath: String = ""
     var fileName: String = ""
     

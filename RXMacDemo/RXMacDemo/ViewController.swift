@@ -17,7 +17,7 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
         
-        self.logAnalysisAction(sender: NSButton())
+//        self.logAnalysisAction(sender: NSButton())
     }
 
     override var representedObject: Any? {

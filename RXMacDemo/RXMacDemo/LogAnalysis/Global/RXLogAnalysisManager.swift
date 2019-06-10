@@ -17,12 +17,15 @@ class RXLogAnalysisManager: NSObject {
     
     var eventMapping: [String: String] = [:]
     var enterLeaveRoomMapping: [String: String] = [:]
+    var reloadOrTerminateMapping: [String: String] = [:]
+    
     
     override init() {
         super.init()
         self.loadConfig()
         self.loadEvent()
         self.loadEnterLeaveRoom()
+        self.reloadOrTerminate()
     }
     func loadConfig() {
         let myStrings = self.load(path: "rx_log_config")
@@ -46,6 +49,10 @@ class RXLogAnalysisManager: NSObject {
     }
     func loadEnterLeaveRoom() {
         self.load(path: "rx_log_enterLeaveRoom", mapping: &self.enterLeaveRoomMapping)
+    }
+    
+    func reloadOrTerminate() {
+        self.load(path: "rx_log_reloadOrTerminate", mapping: &self.reloadOrTerminateMapping)
     }
     
     func load(path: String,  mapping: inout [String: String]) {

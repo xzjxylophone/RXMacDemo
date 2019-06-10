@@ -34,6 +34,8 @@
 		584BE9B622941CA900FE7C0B /* RXLAColumnRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584BE9B422941CA900FE7C0B /* RXLAColumnRowViewController.xib */; };
 		584BE9BA2294248300FE7C0B /* RXLAColumnRowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BE9B92294248300FE7C0B /* RXLAColumnRowCellView.swift */; };
 		584BE9BC2294328A00FE7C0B /* rx_log_enterLeaveRoom.txt in Resources */ = {isa = PBXBuildFile; fileRef = 584BE9BB2294328A00FE7C0B /* rx_log_enterLeaveRoom.txt */; };
+		58ED5608229B98DD00CB91B6 /* rx_log_reloadOrTerminate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58ED5607229B98DD00CB91B6 /* rx_log_reloadOrTerminate.txt */; };
+		58ED560A229B9B9200CB91B6 /* RXFileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED5609229B9B9200CB91B6 /* RXFileUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		584BE9B422941CA900FE7C0B /* RXLAColumnRowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RXLAColumnRowViewController.xib; sourceTree = "<group>"; };
 		584BE9B92294248300FE7C0B /* RXLAColumnRowCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLAColumnRowCellView.swift; sourceTree = "<group>"; };
 		584BE9BB2294328A00FE7C0B /* rx_log_enterLeaveRoom.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = rx_log_enterLeaveRoom.txt; sourceTree = "<group>"; };
+		58ED5607229B98DD00CB91B6 /* rx_log_reloadOrTerminate.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = rx_log_reloadOrTerminate.txt; sourceTree = "<group>"; };
+		58ED5609229B9B9200CB91B6 /* RXFileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXFileUtil.swift; sourceTree = "<group>"; };
 		A64A7E3E3A46EA6B9C1B894B /* Pods-RXMacDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RXMacDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RXMacDemo/Pods-RXMacDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,7 @@
 				584BE97422925DB600FE7C0B /* rx_log_config.txt */,
 				584BE9962292E0CD00FE7C0B /* rx_log_event.txt */,
 				584BE9BB2294328A00FE7C0B /* rx_log_enterLeaveRoom.txt */,
+				58ED5607229B98DD00CB91B6 /* rx_log_reloadOrTerminate.txt */,
 			);
 			path = Res;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				584BE9B12293A14200FE7C0B /* RXFunctionItem.swift */,
+				58ED5609229B9B9200CB91B6 /* RXFileUtil.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 				584BE9BC2294328A00FE7C0B /* rx_log_enterLeaveRoom.txt in Resources */,
 				584BE98622925DB600FE7C0B /* rx_log_config.txt in Resources */,
 				584BE9972292E0CD00FE7C0B /* rx_log_event.txt in Resources */,
+				58ED5608229B98DD00CB91B6 /* rx_log_reloadOrTerminate.txt in Resources */,
 				5826B9682253982C0020C47C /* Assets.xcassets in Resources */,
 				5826B96B2253982C0020C47C /* Main.storyboard in Resources */,
 			);
@@ -377,6 +384,7 @@
 				584BE98C22925DB600FE7C0B /* RXLogAnalysisDetailModel.swift in Sources */,
 				584BE99022925DB600FE7C0B /* RXLogAnalysisFunctionView.swift in Sources */,
 				5826B9662253982A0020C47C /* ViewController.swift in Sources */,
+				58ED560A229B9B9200CB91B6 /* RXFileUtil.swift in Sources */,
 				5826B9642253982A0020C47C /* AppDelegate.swift in Sources */,
 				584BE99122925DB600FE7C0B /* RXLogAnalysisListTableViewImpl.swift in Sources */,
 				584BE9AD2292EB2800FE7C0B /* RXLAFunctionColumnImpl.swift in Sources */,

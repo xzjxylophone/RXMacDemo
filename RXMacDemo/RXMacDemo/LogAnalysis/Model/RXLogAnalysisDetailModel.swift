@@ -86,6 +86,16 @@ class RXLogAnalysisDetailModel: NSObject {
                 let tmpEventName: String? = RXLogAnalysisManager.sharedInstance.eventMapping[event_id]
                 if tmpEventName != nil {
                     self.event_id_name = tmpEventName!
+                    if event_id.elementsEqual("app_kid_classroom_lightning_VKRoomServiceManager_query_roomEvent") {
+                        let e_level: String = self.getValue(listModel: listModel, key: "e_level", row: row)
+                        if e_level.elementsEqual("info") {
+                            self.event_id_name = tmpEventName! + "成功"
+                        } else if e_level.elementsEqual("error") {
+                            self.event_id_name = tmpEventName! + "失败"
+                        } else {
+                            // Do Nothing
+                        }
+                    }
                 } else {
                     self.event_id_name = "未描述"
                 }

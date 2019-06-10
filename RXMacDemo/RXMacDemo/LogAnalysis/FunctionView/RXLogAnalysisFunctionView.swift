@@ -9,6 +9,12 @@
 import Cocoa
 protocol RXLogAnalysisFunctionViewDelegate: NSObjectProtocol {
     func enterLeaveRoomAction()
+    func allAction()
+    func inClassAction()
+    func gossipAction()
+    func outClassAction()
+    func jkClassAction()
+    func reloadOrTerminateAction()
 }
 
 
@@ -26,8 +32,12 @@ class RXLogAnalysisFunctionView: NSView, NSTableViewDelegate, NSTableViewDataSou
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
-        let titles: [String] = ["行列显示", "诊断分析", "进入教室/退出教室筛选", "教室内崩溃检测"]
-        let actions: [String] = ["columnRowAction", "diagnoseAction", "enterLeaveRoomAction", "crashCheckAction"]
+        let titles: [String] = ["行列显示", "诊断分析",  "全部日志",
+                                "教室内日志", "gossip日志", "教室外日志", "监课日志",
+                                "进入教室/退出教室日志", "重启/手动结束app日志", "教室内崩溃检测"]
+        let actions: [String] = ["columnRowAction", "diagnoseAction", "allAction",
+                                 "inClassAction", "gossipAction", "outClassAction", "jkClassAction",
+                                 "enterLeaveRoomAction", "reloadOrTerminateAction", "crashCheckAction"]
         var itemArray: [RXFunctionItem] = []
         for (index, title) in titles.enumerated() {
             let action = actions[index]
@@ -107,9 +117,27 @@ class RXLogAnalysisFunctionView: NSView, NSTableViewDelegate, NSTableViewDataSou
     @objc func diagnoseAction() {
         print("diagnoseAction")
     }
+    @objc func allAction() {
+        self.delegate?.allAction()
+    }
+    @objc func inClassAction() {
+        self.delegate?.inClassAction()
+    }
+    @objc func gossipAction() {
+        self.delegate?.gossipAction()
+    }
+    @objc func outClassAction() {
+        self.delegate?.outClassAction()
+    }
+    @objc func jkClassAction() {
+        self.delegate?.jkClassAction()
+    }
     @objc func enterLeaveRoomAction() {
 //        print("enterLeaveRoomAction")
         self.delegate?.enterLeaveRoomAction()
+    }
+    @objc func reloadOrTerminateAction() {
+        self.delegate?.reloadOrTerminateAction()
     }
     @objc func crashCheckAction() {
         print("crashCheckAction")

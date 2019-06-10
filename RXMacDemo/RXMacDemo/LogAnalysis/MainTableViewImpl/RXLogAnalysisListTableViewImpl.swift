@@ -161,7 +161,9 @@ class RXLogAnalysisListTableViewImpl: NSObject, NSTableViewDelegate, NSTableView
         let context: RXLogAnalysisContext? = RXLogAnalysisManager.sharedInstance.context
         context?.detailImpl.reload(listModel: model)
         context?.functionView?.reload(listModel: model)
+        context?.functionView?.tableView.deselectAll(nil)
         context?.functionView?.delegate = context?.detailImpl
+        
     }
     
     // MARK: NSTableViewDelegate
