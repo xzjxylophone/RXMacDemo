@@ -1,0 +1,25 @@
+//
+//  rx_log_gesture.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/7/22.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+app_kid_classroom_lightning_gestureRecognize_receiveGesture,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_success,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_timeout,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_engineInitSuccess,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_engineInitFailed,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_gestureOpenSuccess,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_gestureOpenFailed,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_gestureCloseSuccess,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_gestureCloseFailed,1
+app_kid_classroom_lightning_gestureRecognize_respondGesture_gestureChange,1
+app_kid_classroom_lightning_gestureRecognize_open,1
+app_kid_classroom_lightning_gestureRecognize_close,1
+
+
+
+
+

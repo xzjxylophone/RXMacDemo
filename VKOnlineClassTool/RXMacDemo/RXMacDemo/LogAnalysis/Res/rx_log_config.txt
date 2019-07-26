@@ -1,0 +1,21 @@
+//
+//  rx_log_config.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/5/17.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+// key,width
+time,150
+type,100
+event,200
+event_id,500
+event_id_name,300
+sub_sender,200
+app_class_vendor,100
+app_class_linecode,150
+app_status_description,500
+app_origin_data,200
+
+

@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.8.2)
+  - CrossroadRegex (1.1.0)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - CrossroadRegex
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CrossroadRegex
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CrossroadRegex: 5eaadb3f7b4014728f1cbd1014756b126c1dbd9a
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: abb202fecec7f403050fa83f3725e290bb101c5a
+
+COCOAPODS: 1.5.3

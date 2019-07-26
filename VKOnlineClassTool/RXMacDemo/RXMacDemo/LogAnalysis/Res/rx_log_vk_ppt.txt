@@ -1,0 +1,16 @@
+//
+//  rx_log_vk_ppt.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/5/30.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+app_kid_dynamic_course_dcw_container_load_begin,1
+app_kid_dynamic_course_dcw_container_load_commit,1
+app_kid_dynamic_course_dcw_container_load_success,1
+app_kid_dynamic_course_dcw_container_load_failed,1
+app_kid_dynamic_course_dcw_container_load_didReceiveServerRedirectForProvisionalNavigation,1
+app_kid_dynamic_course_dcw_container_load_webContentProcessDidTerminate,1
+app_kid_dynamic_course_dcw_container_reload,1
+app_kid_dynamic_course_dcw_container_load_failed_notreload,1

@@ -1,0 +1,13 @@
+//
+//  rx_log_audio_video.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/5/30.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+app_kid_classroom_mikoyan_report_speed,1
+app_kid_classroom_mikoyan_video_play_noVideoData,1
+app_kid_classroom_mikoyan_audio_play_playDelay,1
+app_kid_classroom_mikoyan_video_play_playDelay,1
+app_kid_classroom_mikoyan_video_play_reconnect,1

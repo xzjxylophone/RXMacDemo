@@ -1,0 +1,26 @@
+//
+//  rx_log_audio.txt
+//  RXMacDemo
+//
+//  Created by Rush.D.Xzj on 2019/7/12.
+//  Copyright © 2019 Rush.D.Xzj. All rights reserved.
+//
+
+app_kid_classroom_mikoyan_audio_echo_isEnableWebrtcEchoCancellation,1
+app_kid_classroom_mikoyan_enterroom_audioEdgePoint,1
+app_kid_classroom_mikoyan_audio_record_kAudioUnitSubType,1
+app_kid_classroom_mikoyan_audio_play_checkError,1
+app_kid_classroom_mikoyan_audio_play_AudioUnitInitializeFailed,1
+app_kid_classroom_mikoyan_audio_record_isHasHeadset,1
+app_kid_classroom_mikoyan_audio_record_isHasBluetoothHeadset,1
+app_kid_classroom_mikoyan_audio_record_setAudioSessionCategory,1
+app_kid_classroom_mikoyan_audio_record_setAudioSessionCategoryOptions,1
+app_kid_classroom_mikoyan_audio_record_setAudioSessionModel,1
+app_kid_classroom_mikoyan_audio_record_overrideOutputAudioPortSpeaker,1
+app_kid_classroom_mikoyan_audio_record_kAudioUnitSubType,1
+app_kid_classroom_mikoyan_audio_record_setAudioSessionActiveError,1
+app_kid_classroom_mikoyan_audio_record_setAudioUnitPropertyDone,1
+app_kid_classroom_Raptor_receiveXL_audioPlay,1
+app_kid_classroom_mikoyan_audio_play_startPlay,1
+
+
